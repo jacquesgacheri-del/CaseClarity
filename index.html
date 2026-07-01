@@ -315,7 +315,7 @@
   </header>
 
   <div class="card">
-    <label>Your Anthropic API Key</label>
+    <label>Your Groq API Key</label>
     <div class="api-row">
       <div>
         <input type="text" id="apiKey" placeholder="gsk_..." autocomplete="off" />
@@ -361,7 +361,7 @@
     <div class="output-body" id="outputBody"></div>
   </div>
 
-  <footer>Built with Claude · caseclarity · open source</footer>
+  <footer>Built by Gacheri · CaseClarity · Powered by Groq & Llama 3.3</footer>
 
 </div>
 
@@ -514,6 +514,14 @@ function copyOutput() {
     setTimeout(() => btn.textContent = 'Copy', 2000);
   });
 }
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+document.getElementById('customerName').value='Retailco';
+document.getElementById('priority').value='medium';
+document.getElementById('conversation').value='[EMAIL] From: Sarah Chen <s.chen@retailco.com> To: support@yourcompany.com — March 3, 9:14am\nHi, we\'ve been having issues with our account since the update last week. Several of our team members can\'t log in and we have a big presentation tomorrow. This is really urgent. Can someone help ASAP?\n\n[EMAIL] From: support@yourcompany.com To: s.chen@retailco.com — March 3, 10:02am\nHi Sarah, thanks for reaching out! I\'ve created ticket #48821 for you. Can you tell me how many users are affected and what error message they\'re seeing?\n\n[SLACK - #retailco-account channel] March 3, 10:45am\njohn.k: hey has anyone picked up the retailco ticket yet\nmike.t: yeah sarah emailed in, i responded asking for more info\njohn.k: ok cool because their CSM just pinged me separately saying they\'re freaking out\nmike.t: lol of course they are\njohn.k: their renewal is next month btw\nmike.t: noted\n\n[EMAIL] From: s.chen@retailco.com To: support@yourcompany.com — March 3, 11:30am\nIt\'s 6 users. The error says "authentication failed - contact administrator". We\'ve tried resetting passwords, clearing cache, different browsers, nothing works. Also our admin David Kim is traveling and we can\'t reach him easily. This is a nightmare, we literally have a board presentation tomorrow morning using the platform.\n';
+});
 </script>
 </body>
 </html>
