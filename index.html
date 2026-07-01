@@ -318,10 +318,10 @@
     <label>Your Anthropic API Key</label>
     <div class="api-row">
       <div>
-        <input type="text" id="apiKey" placeholder="sk-ant-..." autocomplete="off" />
+        <input type="text" id="apiKey" placeholder="AIza..." autocomplete="off" />
       </div>
     </div>
-    <p style="font-size:0.78rem; color:#aaa; margin-top:-0.5rem;">Your key stays in your browser. Never stored or sent anywhere except the Anthropic API.</p>
+    <p style="font-size:0.78rem; color:#aaa; margin-top:-0.5rem;">Your key stays in your browser. Never stored or sent anywhere except the Google Gemini API. Free to use at <a href="https://aistudio.google.com" style="color:#888;">aistudio.google.com</a></p>
   </div>
 
   <div class="row">
@@ -402,13 +402,11 @@ Respond ONLY with a JSON object in this exact format, no markdown, no preamble:
 }`;
 
   try {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
+    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'x-api-key': apiKey, 'anthropic-version': '2023-06-01' },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        model: 'claude-sonnet-4-6',
-        max_tokens: 1000,
-        messages: [{ role: 'user', content: prompt }]
+        contents: [{ parts: [{ text: prompt }] }]
       })
     });
 
@@ -419,7 +417,7 @@ Respond ONLY with a JSON object in this exact format, no markdown, no preamble:
       return;
     }
 
-    const text = data.content[0].text.replace(/```json|```/g, '').trim();
+    const text = data.candidates[0].content.parts[0].text.replace(/```json|```/g, '').trim();
     const parsed = JSON.parse(text);
     renderOutput(parsed, customerName, priority);
 
