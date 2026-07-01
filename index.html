@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CaseClarity — Customer Case Summarizer</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #f7f7f5;
+    color: #1a1a1a;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+  }
+
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  header {
+    margin-bottom: 2.5rem;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 0.5rem;
+  }
+
+  .logo-mark {
+    width: 32px;
+    height: 32px;
+    background: #1a1a1a;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logo-mark svg { display: block; }
+
+  h1 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: #1a1a1a;
+  }
+
+  .tagline {
+    font-size: 0.85rem;
+    color: #888;
+    margin-top: 0.2rem;
+  }
+
+  .card {
+    background: #fff;
+    border: 1px solid #e8e8e5;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #888;
+    margin-bottom: 0.6rem;
+  }
+
+  textarea {
+    width: 100%;
+    border: 1px solid #e0e0dc;
+    border-radius: 8px;
+    padding: 0.85rem 1rem;
+    font-size: 0.9rem;
+    font-family: inherit;
+    color: #1a1a1a;
+    background: #fafaf8;
+    resize: vertical;
+    line-height: 1.6;
+    transition: border-color 0.15s;
+    outline: none;
+  }
+
+  textarea:focus { border-color: #1a1a1a; background: #fff; }
+  textarea::placeholder { color: #bbb; }
+
+  .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  input[type="text"] {
+    width: 100%;
+    border: 1px solid #e0e0dc;
+    border-radius: 8px;
+    padding: 0.7rem 1rem;
+    font-size: 0.9rem;
+    font-family: inherit;
+    color: #1a1a1a;
+    background: #fafaf8;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+
+  input[type="text"]:focus { border-color: #1a1a1a; background: #fff; }
+  input[type="text"]::placeholder { color: #bbb; }
+
+  select {
+    width: 100%;
+    border: 1px solid #e0e0dc;
+    border-radius: 8px;
+    padding: 0.7rem 1rem;
+    font-size: 0.9rem;
+    font-family: inherit;
+    color: #1a1a1a;
+    background: #fafaf8;
+    outline: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    cursor: pointer;
+  }
+
+  .api-row {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-end;
+    margin-bottom: 1.25rem;
+  }
+
+  .api-row > div { flex: 1; }
+
+  button.summarize {
+    background: #1a1a1a;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: opacity 0.15s, transform 0.1s;
+    white-space: nowrap;
+  }
+
+  button.summarize:hover { opacity: 0.85; }
+  button.summarize:active { transform: scale(0.98); }
+  button.summarize:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  .output-card {
+    background: #fff;
+    border: 1px solid #e8e8e5;
+    border-radius: 12px;
+    overflow: hidden;
+    display: none;
+  }
+
+  .output-card.visible { display: block; }
+
+  .output-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #f0f0ec;
+    background: #fafaf8;
+  }
+
+  .output-header span {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #888;
+  }
+
+  .copy-btn {
+    background: none;
+    border: 1px solid #e0e0dc;
+    border-radius: 6px;
+    padding: 0.3rem 0.75rem;
+    font-size: 0.78rem;
+    font-family: inherit;
+    color: #666;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+
+  .copy-btn:hover { background: #f0f0ec; }
+
+  .output-body { padding: 1.5rem; }
+
+  .section-block {
+    margin-bottom: 1.25rem;
+  }
+
+  .section-block:last-child { margin-bottom: 0; }
+
+  .section-title {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #aaa;
+    margin-bottom: 0.4rem;
+  }
+
+  .section-content {
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: #1a1a1a;
+  }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.2rem;
+  }
+
+  .tag {
+    background: #f0f0ec;
+    color: #555;
+    border-radius: 5px;
+    padding: 0.2rem 0.6rem;
+    font-size: 0.78rem;
+    font-weight: 500;
+  }
+
+  .tag.urgent { background: #fee2e2; color: #991b1b; }
+  .tag.medium { background: #fef3c7; color: #92400e; }
+  .tag.low { background: #dcfce7; color: #166534; }
+
+  .divider {
+    height: 1px;
+    background: #f0f0ec;
+    margin: 1rem 0;
+  }
+
+  .loading {
+    display: none;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 1.5rem;
+    color: #888;
+    font-size: 0.88rem;
+  }
+
+  .loading.visible { display: flex; }
+
+  .spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #e0e0dc;
+    border-top-color: #1a1a1a;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .error-msg {
+    display: none;
+    background: #fee2e2;
+    color: #991b1b;
+    border-radius: 8px;
+    padding: 0.85rem 1rem;
+    font-size: 0.88rem;
+    margin-bottom: 1rem;
+  }
+
+  .error-msg.visible { display: block; }
+
+  footer {
+    text-align: center;
+    margin-top: 2.5rem;
+    font-size: 0.78rem;
+    color: #ccc;
+  }
+
+  @media (max-width: 560px) {
+    .row { grid-template-columns: 1fr; }
+    .api-row { flex-direction: column; }
+    button.summarize { width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="logo">
+      <div class="logo-mark">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="2" width="14" height="3" rx="1.5" fill="white"/>
+          <rect x="2" y="7.5" width="10" height="3" rx="1.5" fill="white"/>
+          <rect x="2" y="13" width="7" height="3" rx="1.5" fill="white"/>
+        </svg>
+      </div>
+      <h1>CaseClarity</h1>
+    </div>
+    <p class="tagline">Paste a customer conversation. Get a clean, structured case summary.</p>
+  </header>
+
+  <div class="card">
+    <label>Your Anthropic API Key</label>
+    <div class="api-row">
+      <div>
+        <input type="text" id="apiKey" placeholder="sk-ant-..." autocomplete="off" />
+      </div>
+    </div>
+    <p style="font-size:0.78rem; color:#aaa; margin-top:-0.5rem;">Your key stays in your browser. Never stored or sent anywhere except the Anthropic API.</p>
+  </div>
+
+  <div class="row">
+    <div>
+      <label>Customer name</label>
+      <input type="text" id="customerName" placeholder="e.g. Acme Corp" />
+    </div>
+    <div>
+      <label>Priority</label>
+      <select id="priority">
+        <option value="low">Low</option>
+        <option value="medium" selected>Medium</option>
+        <option value="urgent">Urgent</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="card">
+    <label>Paste conversation thread</label>
+    <textarea id="conversation" rows="10" placeholder="Paste the full conversation here — emails, chat logs, internal notes, whatever you have. The messier the better."></textarea>
+  </div>
+
+  <div class="error-msg" id="errorMsg"></div>
+
+  <button class="summarize" id="summarizeBtn" onclick="summarize()">Summarize case →</button>
+
+  <div class="loading" id="loading">
+    <div class="spinner"></div>
+    <span>Analyzing conversation...</span>
+  </div>
+
+  <div class="output-card" id="outputCard" style="margin-top: 1.25rem;">
+    <div class="output-header">
+      <span>Case summary</span>
+      <button class="copy-btn" onclick="copyOutput()">Copy</button>
+    </div>
+    <div class="output-body" id="outputBody"></div>
+  </div>
+
+  <footer>Built with Claude · caseclarity · open source</footer>
+
+</div>
+
+<script>
+async function summarize() {
+  const apiKey = document.getElementById('apiKey').value.trim();
+  const conversation = document.getElementById('conversation').value.trim();
+  const customerName = document.getElementById('customerName').value.trim() || 'Unknown';
+  const priority = document.getElementById('priority').value;
+
+  const errorEl = document.getElementById('errorMsg');
+  errorEl.className = 'error-msg';
+
+  if (!apiKey) { showError('Please enter your Anthropic API key.'); return; }
+  if (!conversation) { showError('Please paste a conversation to summarize.'); return; }
+
+  document.getElementById('summarizeBtn').disabled = true;
+  document.getElementById('loading').className = 'loading visible';
+  document.getElementById('outputCard').className = 'output-card';
+
+  const prompt = `You are a customer success specialist. Analyze the following customer conversation and produce a structured case summary.
+
+Customer: ${customerName}
+Priority: ${priority}
+
+Conversation:
+${conversation}
+
+Respond ONLY with a JSON object in this exact format, no markdown, no preamble:
+{
+  "issue": "One sentence describing the core customer issue",
+  "context": "2-3 sentences of relevant background (account type, history, what triggered this)",
+  "status": "Current state of the issue — what has been tried, what is pending",
+  "sentiment": "Positive | Neutral | Frustrated | Angry",
+  "next_steps": ["Action 1", "Action 2", "Action 3"],
+  "suggested_response_opening": "A natural opening line for your customer reply",
+  "tags": ["tag1", "tag2", "tag3"]
+}`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'x-api-key': apiKey, 'anthropic-version': '2023-06-01' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-6',
+        max_tokens: 1000,
+        messages: [{ role: 'user', content: prompt }]
+      })
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      showError(data.error?.message || 'API error. Check your key and try again.');
+      return;
+    }
+
+    const text = data.content[0].text.replace(/```json|```/g, '').trim();
+    const parsed = JSON.parse(text);
+    renderOutput(parsed, customerName, priority);
+
+  } catch (e) {
+    showError('Something went wrong. Check your API key and try again.');
+    console.error(e);
+  } finally {
+    document.getElementById('summarizeBtn').disabled = false;
+    document.getElementById('loading').className = 'loading';
+  }
+}
+
+function renderOutput(d, customerName, priority) {
+  const priorityClass = { low: 'low', medium: 'medium', urgent: 'urgent' }[priority] || '';
+
+  const nextSteps = (d.next_steps || []).map((s, i) =>
+    `<div style="display:flex;gap:0.6rem;margin-bottom:0.35rem;">
+      <span style="font-size:0.75rem;font-weight:700;color:#aaa;min-width:1.2rem;padding-top:0.15rem;">${i+1}</span>
+      <span style="font-size:0.9rem;line-height:1.55;">${s}</span>
+    </div>`
+  ).join('');
+
+  const tags = (d.tags || []).map(t =>
+    `<span class="tag">${t}</span>`
+  ).join('');
+
+  document.getElementById('outputBody').innerHTML = `
+    <div class="section-block">
+      <div class="section-title">Customer · Priority</div>
+      <div class="tag-row">
+        <span class="tag" style="font-weight:600;">${customerName}</span>
+        <span class="tag ${priorityClass}">${priority.charAt(0).toUpperCase() + priority.slice(1)} priority</span>
+        <span class="tag">Sentiment: ${d.sentiment || '—'}</span>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section-block">
+      <div class="section-title">Core issue</div>
+      <div class="section-content">${d.issue || '—'}</div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-title">Context</div>
+      <div class="section-content">${d.context || '—'}</div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-title">Current status</div>
+      <div class="section-content">${d.status || '—'}</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section-block">
+      <div class="section-title">Recommended next steps</div>
+      ${nextSteps}
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section-block">
+      <div class="section-title">Suggested reply opening</div>
+      <div class="section-content" style="font-style:italic;color:#555;">"${d.suggested_response_opening || '—'}"</div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-title">Tags</div>
+      <div class="tag-row">${tags}</div>
+    </div>
+  `;
+
+  document.getElementById('outputCard').className = 'output-card visible';
+  document.getElementById('outputCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function showError(msg) {
+  const el = document.getElementById('errorMsg');
+  el.textContent = msg;
+  el.className = 'error-msg visible';
+  document.getElementById('summarizeBtn').disabled = false;
+  document.getElementById('loading').className = 'loading';
+}
+
+function copyOutput() {
+  const body = document.getElementById('outputBody');
+  const text = body.innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.querySelector('.copy-btn');
+    btn.textContent = 'Copied!';
+    setTimeout(() => btn.textContent = 'Copy', 2000);
+  });
+}
+</script>
+</body>
+</html>
