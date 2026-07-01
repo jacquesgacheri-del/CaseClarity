@@ -15,280 +15,107 @@
     padding: 2rem 1rem;
   }
 
-  .container {
-    max-width: 720px;
-    margin: 0 auto;
-  }
+  .container { max-width: 720px; margin: 0 auto; }
 
-  header {
-    margin-bottom: 2.5rem;
-  }
+  header { margin-bottom: 2.5rem; }
 
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 0.5rem;
-  }
+  .logo { display: flex; align-items: center; gap: 10px; margin-bottom: 0.5rem; }
 
   .logo-mark {
-    width: 32px;
-    height: 32px;
-    background: #1a1a1a;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 32px; height: 32px; background: #1a1a1a; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
   }
 
   .logo-mark svg { display: block; }
 
-  h1 {
-    font-size: 1.1rem;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    color: #1a1a1a;
-  }
+  h1 { font-size: 1.1rem; font-weight: 600; letter-spacing: -0.01em; color: #1a1a1a; }
 
-  .tagline {
-    font-size: 0.85rem;
-    color: #888;
-    margin-top: 0.2rem;
-  }
+  .tagline { font-size: 0.85rem; color: #888; margin-top: 0.2rem; }
 
-  .card {
-    background: #fff;
-    border: 1px solid #e8e8e5;
-    border-radius: 12px;
-    padding: 1.5rem;
-    margin-bottom: 1.25rem;
-  }
+  .card { background: #fff; border: 1px solid #e8e8e5; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.25rem; }
 
-  label {
-    display: block;
-    font-size: 0.8rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: #888;
-    margin-bottom: 0.6rem;
-  }
+  label { display: block; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #888; margin-bottom: 0.6rem; }
 
   textarea {
-    width: 100%;
-    border: 1px solid #e0e0dc;
-    border-radius: 8px;
-    padding: 0.85rem 1rem;
-    font-size: 0.9rem;
-    font-family: inherit;
-    color: #1a1a1a;
-    background: #fafaf8;
-    resize: vertical;
-    line-height: 1.6;
-    transition: border-color 0.15s;
-    outline: none;
+    width: 100%; border: 1px solid #e0e0dc; border-radius: 8px; padding: 0.85rem 1rem;
+    font-size: 0.9rem; font-family: inherit; color: #1a1a1a; background: #fafaf8;
+    resize: vertical; line-height: 1.6; transition: border-color 0.15s; outline: none;
   }
 
   textarea:focus { border-color: #1a1a1a; background: #fff; }
   textarea::placeholder { color: #bbb; }
 
-  .row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    margin-bottom: 1.25rem;
-  }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem; }
 
   input[type="text"] {
-    width: 100%;
-    border: 1px solid #e0e0dc;
-    border-radius: 8px;
-    padding: 0.7rem 1rem;
-    font-size: 0.9rem;
-    font-family: inherit;
-    color: #1a1a1a;
-    background: #fafaf8;
-    outline: none;
-    transition: border-color 0.15s;
+    width: 100%; border: 1px solid #e0e0dc; border-radius: 8px; padding: 0.7rem 1rem;
+    font-size: 0.9rem; font-family: inherit; color: #1a1a1a; background: #fafaf8;
+    outline: none; transition: border-color 0.15s;
   }
 
   input[type="text"]:focus { border-color: #1a1a1a; background: #fff; }
   input[type="text"]::placeholder { color: #bbb; }
 
   select {
-    width: 100%;
-    border: 1px solid #e0e0dc;
-    border-radius: 8px;
-    padding: 0.7rem 1rem;
-    font-size: 0.9rem;
-    font-family: inherit;
-    color: #1a1a1a;
-    background: #fafaf8;
-    outline: none;
-    appearance: none;
+    width: 100%; border: 1px solid #e0e0dc; border-radius: 8px; padding: 0.7rem 1rem;
+    font-size: 0.9rem; font-family: inherit; color: #1a1a1a; background: #fafaf8;
+    outline: none; appearance: none;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 0.75rem center;
-    cursor: pointer;
+    background-repeat: no-repeat; background-position: right 0.75rem center; cursor: pointer;
   }
 
-  .api-row {
-    display: flex;
-    gap: 0.75rem;
-    align-items: flex-end;
-    margin-bottom: 1.25rem;
-  }
-
+  .api-row { display: flex; gap: 0.75rem; align-items: flex-end; margin-bottom: 1.25rem; }
   .api-row > div { flex: 1; }
 
   button.summarize {
-    background: #1a1a1a;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    padding: 0.75rem 1.5rem;
-    font-size: 0.9rem;
-    font-weight: 600;
-    font-family: inherit;
-    cursor: pointer;
-    transition: opacity 0.15s, transform 0.1s;
-    white-space: nowrap;
+    background: #1a1a1a; color: #fff; border: none; border-radius: 8px;
+    padding: 0.75rem 1.5rem; font-size: 0.9rem; font-weight: 600; font-family: inherit;
+    cursor: pointer; transition: opacity 0.15s, transform 0.1s; white-space: nowrap;
   }
 
   button.summarize:hover { opacity: 0.85; }
   button.summarize:active { transform: scale(0.98); }
   button.summarize:disabled { opacity: 0.4; cursor: not-allowed; }
 
-  .output-card {
-    background: #fff;
-    border: 1px solid #e8e8e5;
-    border-radius: 12px;
-    overflow: hidden;
-    display: none;
-  }
-
+  .output-card { background: #fff; border: 1px solid #e8e8e5; border-radius: 12px; overflow: hidden; display: none; }
   .output-card.visible { display: block; }
 
-  .output-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 1.5rem;
-    border-bottom: 1px solid #f0f0ec;
-    background: #fafaf8;
-  }
+  .output-header { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.5rem; border-bottom: 1px solid #f0f0ec; background: #fafaf8; }
 
-  .output-header span {
-    font-size: 0.8rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: #888;
-  }
+  .output-header span { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #888; }
 
-  .copy-btn {
-    background: none;
-    border: 1px solid #e0e0dc;
-    border-radius: 6px;
-    padding: 0.3rem 0.75rem;
-    font-size: 0.78rem;
-    font-family: inherit;
-    color: #666;
-    cursor: pointer;
-    transition: background 0.15s;
-  }
-
+  .copy-btn { background: none; border: 1px solid #e0e0dc; border-radius: 6px; padding: 0.3rem 0.75rem; font-size: 0.78rem; font-family: inherit; color: #666; cursor: pointer; transition: background 0.15s; }
   .copy-btn:hover { background: #f0f0ec; }
 
   .output-body { padding: 1.5rem; }
 
-  .section-block {
-    margin-bottom: 1.25rem;
-  }
-
+  .section-block { margin-bottom: 1.25rem; }
   .section-block:last-child { margin-bottom: 0; }
 
-  .section-title {
-    font-size: 0.72rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: #aaa;
-    margin-bottom: 0.4rem;
-  }
+  .section-title { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #aaa; margin-bottom: 0.4rem; }
 
-  .section-content {
-    font-size: 0.9rem;
-    line-height: 1.65;
-    color: #1a1a1a;
-  }
+  .section-content { font-size: 0.9rem; line-height: 1.65; color: #1a1a1a; }
 
-  .tag-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    margin-top: 0.2rem;
-  }
+  .tag-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.2rem; }
 
-  .tag {
-    background: #f0f0ec;
-    color: #555;
-    border-radius: 5px;
-    padding: 0.2rem 0.6rem;
-    font-size: 0.78rem;
-    font-weight: 500;
-  }
-
+  .tag { background: #f0f0ec; color: #555; border-radius: 5px; padding: 0.2rem 0.6rem; font-size: 0.78rem; font-weight: 500; }
   .tag.urgent { background: #fee2e2; color: #991b1b; }
   .tag.medium { background: #fef3c7; color: #92400e; }
   .tag.low { background: #dcfce7; color: #166534; }
 
-  .divider {
-    height: 1px;
-    background: #f0f0ec;
-    margin: 1rem 0;
-  }
+  .divider { height: 1px; background: #f0f0ec; margin: 1rem 0; }
 
-  .loading {
-    display: none;
-    align-items: center;
-    gap: 0.6rem;
-    padding: 1.5rem;
-    color: #888;
-    font-size: 0.88rem;
-  }
-
+  .loading { display: none; align-items: center; gap: 0.6rem; padding: 1.5rem; color: #888; font-size: 0.88rem; }
   .loading.visible { display: flex; }
 
-  .spinner {
-    width: 16px;
-    height: 16px;
-    border: 2px solid #e0e0dc;
-    border-top-color: #1a1a1a;
-    border-radius: 50%;
-    animation: spin 0.7s linear infinite;
-  }
+  .spinner { width: 16px; height: 16px; border: 2px solid #e0e0dc; border-top-color: #1a1a1a; border-radius: 50%; animation: spin 0.7s linear infinite; }
 
   @keyframes spin { to { transform: rotate(360deg); } }
 
-  .error-msg {
-    display: none;
-    background: #fee2e2;
-    color: #991b1b;
-    border-radius: 8px;
-    padding: 0.85rem 1rem;
-    font-size: 0.88rem;
-    margin-bottom: 1rem;
-  }
-
+  .error-msg { display: none; background: #fee2e2; color: #991b1b; border-radius: 8px; padding: 0.85rem 1rem; font-size: 0.88rem; margin-bottom: 1rem; }
   .error-msg.visible { display: block; }
 
-  footer {
-    text-align: center;
-    margin-top: 2.5rem;
-    font-size: 0.78rem;
-    color: #ccc;
-  }
+  footer { text-align: center; margin-top: 2.5rem; font-size: 0.78rem; color: #ccc; }
 
   @media (max-width: 560px) {
     .row { grid-template-columns: 1fr; }
@@ -327,7 +154,7 @@
   <div class="row">
     <div>
       <label>Customer name</label>
-      <input type="text" id="customerName" placeholder="e.g. Acme Corp" />
+      <input type="text" id="customerName" placeholder="e.g. Acme Corp" value="Retailco" />
     </div>
     <div>
       <label>Priority</label>
@@ -361,11 +188,97 @@
     <div class="output-body" id="outputBody"></div>
   </div>
 
-  <footer>Built by Gacheri · CaseClarity · Powered by Groq & Llama 3.3</footer>
+  <footer>Created by Gacheri · Powered by Groq</footer>
 
 </div>
 
 <script>
+document.getElementById('conversation').value = `[EMAIL] From: Sarah Chen <s.chen@retailco.com> To: support@yourcompany.com — March 3, 9:14am
+Hi, we've been having issues with our account since the update last week. Several of our team members can't log in and we have a big presentation tomorrow. This is really urgent. Can someone help ASAP?
+
+[EMAIL] From: support@yourcompany.com To: s.chen@retailco.com — March 3, 10:02am
+Hi Sarah, thanks for reaching out! I've created ticket #48821 for you. Can you tell me how many users are affected and what error message they're seeing?
+
+[SLACK - #retailco-account channel] March 3, 10:45am
+john.k: hey has anyone picked up the retailco ticket yet
+mike.t: yeah sarah emailed in, i responded asking for more info
+john.k: ok cool because their CSM just pinged me separately saying they're freaking out
+mike.t: lol of course they are
+john.k: their renewal is next month btw
+mike.t: noted
+
+[EMAIL] From: s.chen@retailco.com To: support@yourcompany.com — March 3, 11:30am
+It's 6 users. The error says "authentication failed - contact administrator". We've tried resetting passwords, clearing cache, different browsers, nothing works. Also our admin David Kim is traveling and we can't reach him easily. This is a nightmare, we literally have a board presentation tomorrow morning using the platform.
+
+[INTERNAL NOTE - added by mike.t, March 3, 11:45am]
+Checked account. SSO config looks broken - seems like the domain verification lapsed during last week's update. Need to loop in technical team. Sarah doesn't know David set up SSO originally, she thinks it's a password issue.
+
+[SLACK - #tech-escalations] March 3, 12:01pm
+mike.t: hey @priya can you look at retailco SSO? ticket 48821. domain verification lapsed i think
+priya.s: on it. give me 20
+priya.s: ok yeah confirmed. their domain verification token expired March 1st. it's an easy fix on our end but we need authorization from their admin
+mike.t: their admin is traveling and unreachable
+priya.s: ugh. can they reach him at all?
+mike.t: asking now
+
+[EMAIL] From: support@yourcompany.com To: s.chen@retailco.com — March 3, 12:15pm
+Hi Sarah, we've identified the issue — it's related to an SSO configuration that needs to be reauthorized by your admin David. Is there any way to reach him? Alternatively, we could temporarily disable SSO and set up password-based login for the 6 affected users as a short-term fix, but we'd need written authorization from someone with account admin rights.
+
+[EMAIL] From: s.chen@retailco.com To: support@yourcompany.com — March 3, 12:44pm
+I've been trying David but he's in transit. I'm the account owner, doesn't that count? I've been using this platform for 3 years. I don't understand why I can't just authorize this myself. This is incredibly frustrating. Do you know how important tomorrow is for us?
+
+[SLACK - #retailco-account channel] March 3, 1:02pm
+mike.t: sarah is getting heated. she's account owner but not technical admin. priya says we need david or a written workaround approval
+john.k: what if we get her to send an email authorizing the temp fix and we document it
+mike.t: i think that works actually. let me check with legal/compliance
+john.k: also their CSM is Grace btw. she's been quiet, should probably loop her in
+mike.t: oh she doesn't know?? looping her now
+
+[SLACK - DM to grace.l] March 3, 1:10pm
+mike.t: hey grace, did you know retailco is having a login crisis? ticket 48821
+grace.l: WHAT. no one told me. this is a renewal account!!
+grace.l: calling sarah now
+
+[PHONE CALL NOTE - grace.l, March 3, 1:24pm]
+Called Sarah Chen. She is very upset, feels like she's been bounced around. Explained the SSO situation clearly. She calmed down somewhat. She's going to try David one more time. Also mentioned that their team has actually been really happy with the product overall — this is just bad timing. Renewal conversation should still be fine but need to resolve this first. She asked if we could just manually create temporary logins for the 6 users. I told her I'd look into it.
+
+[SLACK - #tech-escalations] March 3, 1:35pm
+grace.l: @priya if sarah sends written email authorization can we do the temp password fix today?
+priya.s: yes, legal already said that's fine as long as it's documented. i can have it done in 30 mins once we get the email
+grace.l: perfect. mike can you email sarah and ask for that?
+
+[EMAIL] From: support@yourcompany.com To: s.chen@retailco.com — March 3, 1:50pm
+Hi Sarah, good news — we can proceed with the temporary fix today with just your written authorization via email. Please simply reply confirming you authorize us to temporarily disable SSO and set up individual password logins for your 6 affected users. We'll get this resolved within 30 minutes of receiving that confirmation.
+
+[EMAIL] From: s.chen@retailco.com To: support@yourcompany.com — March 3, 2:03pm
+Yes I authorize it. Please fix this ASAP. Users are: d.park@retailco.com, t.nguyen@retailco.com, l.osei@retailco.com, m.patel@retailco.com, j.santos@retailco.com, r.kim@retailco.com
+
+[INTERNAL NOTE - priya.s, March 3, 2:35pm]
+Temp fix applied. SSO disabled for retailco account. Created individual logins for all 6 users. Sent password reset emails to each. Should be working now.
+
+[EMAIL] From: support@yourcompany.com To: s.chen@retailco.com — March 3, 2:38pm
+Hi Sarah! All 6 users should now be able to log in — password reset emails have been sent to each of them. Please have them check their inbox (and spam folder just in case). For a permanent fix, we'll need David to reauthorize the SSO configuration when he's back. Grace from your success team will follow up on that next week. Good luck with your presentation tomorrow!
+
+[EMAIL] From: s.chen@retailco.com To: support@yourcompany.com — March 3, 3:01pm
+Thank you. 5 of the 6 are in. r.kim@retailco.com still can't get in.
+
+[SLACK - #tech-escalations] March 3, 3:05pm
+mike.t: @priya one user still locked out - r.kim@retailco.com
+priya.s: oh i see why - that email has a typo in our system, it's registered as r.kkim@retailco.com
+priya.s: fixing now
+priya.s: done. resending password reset
+
+[EMAIL] From: support@yourcompany.com To: s.chen@retailco.com — March 3, 3:18pm
+Hi Sarah, found the issue — there was a typo in that user's email in our system. It's been corrected and a new password reset has been sent to r.kim@retailco.com. You should be all set!
+
+[EMAIL] From: s.chen@retailco.com To: support@yourcompany.com — March 3, 3:22pm
+All 6 are in. Thank you. It took way too long but I appreciate you fixing it. Please make sure this doesn't happen again.
+
+[SLACK - #retailco-account channel] March 3, 3:30pm
+grace.l: all resolved. sarah is ok. making a note to follow up next week re SSO permanent fix and to check in before the renewal
+john.k: good work. let's debrief tomorrow on the communication gaps here
+grace.l: agreed. we should have been looped in from the start`;
+
 async function summarize() {
   const apiKey = document.getElementById('apiKey').value.trim();
   const conversation = document.getElementById('conversation').value.trim();
@@ -375,7 +288,7 @@ async function summarize() {
   const errorEl = document.getElementById('errorMsg');
   errorEl.className = 'error-msg';
 
-  if (!apiKey) { showError('Please enter your Anthropic API key.'); return; }
+  if (!apiKey) { showError('Please enter your Groq API key.'); return; }
   if (!conversation) { showError('Please paste a conversation to summarize.'); return; }
 
   document.getElementById('summarizeBtn').disabled = true;
@@ -455,38 +368,29 @@ function renderOutput(d, customerName, priority) {
         <span class="tag">Sentiment: ${d.sentiment || '—'}</span>
       </div>
     </div>
-
     <div class="divider"></div>
-
     <div class="section-block">
       <div class="section-title">Core issue</div>
       <div class="section-content">${d.issue || '—'}</div>
     </div>
-
     <div class="section-block">
       <div class="section-title">Context</div>
       <div class="section-content">${d.context || '—'}</div>
     </div>
-
     <div class="section-block">
       <div class="section-title">Current status</div>
       <div class="section-content">${d.status || '—'}</div>
     </div>
-
     <div class="divider"></div>
-
     <div class="section-block">
       <div class="section-title">Recommended next steps</div>
       ${nextSteps}
     </div>
-
     <div class="divider"></div>
-
     <div class="section-block">
       <div class="section-title">Suggested reply opening</div>
       <div class="section-content" style="font-style:italic;color:#555;">"${d.suggested_response_opening || '—'}"</div>
     </div>
-
     <div class="section-block">
       <div class="section-title">Tags</div>
       <div class="tag-row">${tags}</div>
@@ -514,14 +418,6 @@ function copyOutput() {
     setTimeout(() => btn.textContent = 'Copy', 2000);
   });
 }
-</script>
-
-<script>
-document.addEventListener('DOMContentLoaded',()=>{
-document.getElementById('customerName').value='Retailco';
-document.getElementById('priority').value='medium';
-document.getElementById('conversation').value='[EMAIL] From: Sarah Chen <s.chen@retailco.com> To: support@yourcompany.com — March 3, 9:14am\nHi, we\'ve been having issues with our account since the update last week. Several of our team members can\'t log in and we have a big presentation tomorrow. This is really urgent. Can someone help ASAP?\n\n[EMAIL] From: support@yourcompany.com To: s.chen@retailco.com — March 3, 10:02am\nHi Sarah, thanks for reaching out! I\'ve created ticket #48821 for you. Can you tell me how many users are affected and what error message they\'re seeing?\n\n[SLACK - #retailco-account channel] March 3, 10:45am\njohn.k: hey has anyone picked up the retailco ticket yet\nmike.t: yeah sarah emailed in, i responded asking for more info\njohn.k: ok cool because their CSM just pinged me separately saying they\'re freaking out\nmike.t: lol of course they are\njohn.k: their renewal is next month btw\nmike.t: noted\n\n[EMAIL] From: s.chen@retailco.com To: support@yourcompany.com — March 3, 11:30am\nIt\'s 6 users. The error says "authentication failed - contact administrator". We\'ve tried resetting passwords, clearing cache, different browsers, nothing works. Also our admin David Kim is traveling and we can\'t reach him easily. This is a nightmare, we literally have a board presentation tomorrow morning using the platform.\n';
-});
 </script>
 </body>
 </html>
